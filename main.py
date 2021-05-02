@@ -271,7 +271,7 @@ async def bazaar(ctx):
         # index through all of them keep track of which is highest keep in 2d list and able to use sorted()
         for item in tierup:
             for otheritem in data:
-                if item['base'] == otheritem['id']:
+                if item['base'][0] == otheritem['id']:
                     item['base'].extend([otheritem['sellprice'], otheritem['buyprice'], otheritem['name']])
                 if item['compacted'][0] == otheritem['id']:
                     item['compacted'].extend([otheritem['sellprice'], otheritem['buyprice'], otheritem['name']])
