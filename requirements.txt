@@ -1,5 +1,4 @@
 discord
 discord-py-slash-command
 python-dotenv
-requests
 cloudscraper
