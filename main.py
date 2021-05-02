@@ -2,7 +2,7 @@
 import os
 from dotenv import load_dotenv
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option, create_choice
 # data processing
@@ -35,17 +35,27 @@ def reloadAPI():
                 item['margin'] = (item['buyprice'] - item['sellprice']) / item['sellprice']
             else:
                 item['margin'] = 0
-    with open('test.json', 'w') as f:
+    with open('data.json', 'w') as f:
         json.dump(data, f)
 
 # init
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="$help"))
     reloadAPI()
     # ah
     # ah_data=requests.get('https://api.hypixel.net/skyblock/auctions').text
     # with open('auction.json', 'w') as file:
     # file.write(ah_data)
+
+@bot.command(name='test')
+@commands.bot_has_permissions(administrator = True)
+async def test(ctx):
+    print('bot has admin')
+
+@tasks.loop(seconds=5.0)
+async def reloadAPIdiscord():
+    reloadAPI()
 
 # helper functions
 def truncate(number, digits) -> float:
@@ -218,7 +228,7 @@ async def bazaar(ctx):
             #{'base': ['SLIME_BALL'], 't1': ['ENCHANTED_SLIME_BALL', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['SLIME_BALL'], 'compacted': ['ENCHANTED_SLIME_BALL', 160]},
             {'base': ['SLIME_BALL'], 'compacted': ['ENCHANTED_SLIME_BLOCK', 25600]},
-            {'base': ['ENCHANTED_SMILE_BALL'], 'compacted': ['ENCHANTED_SLIME_BLOCK', 160]},
+            {'base': ['ENCHANTED_SLIME_BALL'], 'compacted': ['ENCHANTED_SLIME_BLOCK', 160]},
             #{'base': ['BLAZE_ROD'], 't1': ['ENCHANTED_BLAZE_POWDER', 160], 't2': ['ENCHANTED_BLAZE_ROD', 25600], 't3': None, 't4': None},
             {'base': ['BLAZE_ROD'], 'compacted': ['ENCHANTED_BLAZE_POWDER', 160]},
             {'base': ['BLAZE_ROD'], 'compacted': ['ENCHANTED_BLAZE_ROD', 25600]},
@@ -292,32 +302,92 @@ async def bazaar(ctx):
             for i in range(16):
                 embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][3]}', value=f'Instant-buy {tierup[i]["compacted"][1]}x {tierup[i]["base"][3]} at {int(tierup[i]["instantmarginpercent"]*10000)/100}% or {int(tierup[i]["instantmargin"]*10000)/100} coins profit per item.')
         await ctx.send(embed=embed)
-    elif opt == 'craft':
+    elif opt == 'craft' or opt == 'instantcraft':
         craft = [
             # farming
             # golden carrot
+            {'requirements': [['ENCHANTED_CARROT', 128], ['CARROT_ITEM', 32], ['GOLD_INGOT', 256/9]], 'crafted': ['ENCHANTED_GOLDEN_CARROT']},
             # enchanted cookie
+            {'requirements': [['ENCHANTED_COCOA', 128], ['WHEAT', 32]], 'crafted': ['ENCHANTED_COOKIE']},
             # enchanted cake
+            {'requirements': [['WHEAT', 3], ['ENCHANTED_SUGAR', 2], ['ENCHANTED_EGG', 1], ['Milk Bucket', 3, 50]], 'crafted': ['ENCHANTED_CAKE']},
             # mining
             # enchanted charcoal
+            {'requirements': [['COAL', 128], ['LOG', 32]], 'crafted': ['ENCHANTED_CHARCOAL']},
+            {'requirements': [['COAL', 128], ['LOG:2', 32]], 'crafted': ['ENCHANTED_CHARCOAL']},
+            {'requirements': [['COAL', 128], ['LOG:1', 32]], 'crafted': ['ENCHANTED_CHARCOAL']},
+            {'requirements': [['COAL', 128], ['LOG_2:1', 32]], 'crafted': ['ENCHANTED_CHARCOAL']},
+            {'requirements': [['COAL', 128], ['LOG_2', 32]], 'crafted': ['ENCHANTED_CHARCOAL']},
+            {'requirements': [['COAL', 128], ['LOG:3', 32]], 'crafted': ['ENCHANTED_CHARCOAL']},
             # enchanted redstone lamp
+            {'requirements': [['ENCHANTED_GLOWSTONE_DUST', 128], ['ENCHANTED_REDSTONE', 32]], 'crafted': ['ENCHANTED_REDSTONE_LAMP']},
             # enchanted fermented spider eye
+            {'requirements': [['ENCHANTED_SPIDER_EYE', 64], ['SUGAR_CANE', 64], ['BROWN_MUSHROOM', 64]], 'crafted': ['ENCHANTED_FERMENTED_SPIDER_EYE']},
             # enchanted firework rocket
+            {'requirements': [['ENCHANTED_GUNPOWDER', 64], ['SUGAR_CANE', 16]], 'crafted': ['ENCHANTED_FIREWORK_ROCKET']},
             # enchanted eye of ender
+            {'requirements': [['ENCHANTED_ENDER_PEARL', 16], ['BLAZE_ROD', 32]], 'crafted': ['ENCHANTED_EYE_OF_ENDER']},
             # slayers
             # revenant viscera
+            {'requirements': [['REVENANT_FLESH', 128], ['ENCHANTED_STRING', 32]], 'crafted': ['REVENANT_VISCERA']},
             # tarantula silk
+            {'requirements': [['TARANTULA_WEB', 128], ['ENCHANTED_FLINT', 32]], 'crafted': ['TARANTULA_SILK']},
             # golden wolf tooth
+            {'requirements': [['WOLF_TOOTH', 128], ['ENCHANTED_GOLD', 32]], 'crafted': ['GOLDEN_TOOTH']},
             # baits
+            # carrit
+            # minnow
+            # fish
+            # light
+            # dark
+            # spooky
+            # spiked
+            # blessed
+            # ice
+            # whale
+            # shark
             # misc
             {'requirements': [['ENCHANTED_BAKED_POTATO', 1], ['SUGAR_CANE', 3]], 'crafted': ['HOT_POTATO_BOOK']},
             {'requirements': [['ENCHANTED_COBBLESTONE', 448], ['ENCHANTED_REDSTONE_BLOCK', 1]], 'crafted': ['SUPER_COMPACTOR_3000']},
             {'requirements': [['ENCHANTED_COAL_BLOCK', 2], ['ENCHANTED_IRON', 1]], 'crafted': ['ENCHANTED_LAVA_BUCKET']},
-            {'requirements': [['INK_SACK:4', 6]], 'crafted': ['']},
-            {'requirements': [['ENCHANTED_LAPIS_LAZULI', 6]], 'crafted': ['']},
-            {'requirements': [['ENCHANTED_LAPIS_LAZULI_BLOCK', 6]], 'crafted': ['']},
+            {'requirements': [['INK_SACK:4', 6], ['Glass Bottle', 1, 6]], 'crafted': ['EXP_BOTTLE']},
+            {'requirements': [['ENCHANTED_LAPIS_LAZULI', 6], ['Glass Bottle', 1, 6]], 'crafted': ['GRAND_EXP_BOTTLE']},
+            {'requirements': [['ENCHANTED_LAPIS_LAZULI_BLOCK', 6], ['Glass Bottle', 1, 6]], 'crafted': ['TITANIC_EXP_BOTTLE']},
         ]
-        pass
+        for item in craft:
+            for requirement in item['requirements']:
+                # prevent npc items
+                if len(item) == 2:
+                    for dat in data:
+                        if dat['id'] == requirement[0]:
+                            if opt == 'craft':
+                                requirement.append(dat['sellprice'])
+                                requirement.append(requirement[1] * dat['sellprice'])
+                            if opt == 'instantcraft':
+                                requirement.append(dat['buyprice'])
+                                requirement.append(requirement[1] * dat['buyprice'])
+            x = 0
+            for requirement in item['requirements']:
+                x += requirement[2]
+            item['requirements'].append(x)
+            for dat in data:
+                if dat['id'] == item['crafted'][0]:
+                    if opt == 'craft':
+                        item['crafted'].append(dat['buyprice'])
+                    if opt == 'instantcraft':
+                        item['crafted'].append(dat['sellprice'])
+                    item['name'] = dat['name']
+                for req in item['requirements']:
+                    if dat['id'] == item['requirements'][0]:
+                        req.append(dat['name'])
+        craft = sorted(craft, key = (lambda x: x['crafted'][-1] / x['requirements'][-1]), reverse=True)
+        embed = discord.Embed(title='Best Bazaar Craft Flips', description='Buy order at +0.1, craft/quick-craft, and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
+        for i in range(16):
+            x = ''
+            for a in range(len(craft[i]['requirements'])-2):
+                x += f'{craft[i]["requirements"][a][1]}x {craft[i]["requirements"][a][-1]} '
+            embed.add_field(name=f'{i+1}. {craft[i]["name"]}', value=f'Buy {x}for {truncate(((craft[i]["crafted"][-1] / craft[i]["requirements"][-1])*10000)/10000, 2)}% or {truncate(craft[i]["crafted"][-1] - craft[i]["requirements"][-1], 2)} coins profit per item.')
+        await ctx.send(embed=embed)
     #elif opt == 'volume':
         # function of (x^2-y^2)^2 to punish for a large difference between sale and buy
     #    pass
