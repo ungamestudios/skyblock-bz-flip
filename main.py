@@ -145,10 +145,10 @@ async def bazaar(ctx):
             {'base': ['IRON_INGOT'], 'compacted': ['ENCHANTED_IRON', 160]},
             {'base': ['IRON_INGOT'], 'compacted': ['ENCHANTED_IRON_BLOCK', 25600]},
             {'base': ['ENCHANTED_IRON'], 'compacted': ['ENCHANTED_IRON_BLOCK', 160]},
-            #{'base': ['GOLD_INGOT'], 't1': ['ENCHANTED_GOLD', 160], 't2': ['ENHANTED_GOLD_BLOCK', 25600], 't3': None, 't4': None},
+            #{'base': ['GOLD_INGOT'], 't1': ['ENCHANTED_GOLD', 160], 't2': ['ENCHANTED_GOLD_BLOCK', 25600], 't3': None, 't4': None},
             {'base': ['GOLD_INGOT'], 'compacted': ['ENCHANTED_GOLD', 160]},
-            {'base': ['GOLD_INGOT'], 'compacted': ['ENHANTED_GOLD_BLOCK', 25600]},
-            {'base': ['ENCHANTED_GOLD'], 'compacted': ['ENHANTED_GOLD_BLOCK', 160]},
+            {'base': ['GOLD_INGOT'], 'compacted': ['ENCHANTED_GOLD_BLOCK', 25600]},
+            {'base': ['ENCHANTED_GOLD'], 'compacted': ['ENCHANTED_GOLD_BLOCK', 160]},
             #{'base': ['DIAMOND'], 't1': ['ENCHANTED_DIAMOND', 160], 't2': ['ENCHANTED_DIAMOND_BLOCK', 25600], 't3': None, 't4': None},
             {'base': ['DIAMOND'], 'compacted': ['ENCHANTED_DIAMOND', 160]},
             {'base': ['DIAMOND'], 'compacted': ['ENCHANTED_DIAMOND_BLOCK', 25600]},
@@ -162,9 +162,9 @@ async def bazaar(ctx):
             {'base': ['EMERALD'], 'compacted': ['ENCHANTED_EMERALD_BLOCK', 25600]},
             {'base': ['ENCHANTED_EMERALD'], 'compacted': ['ENCHANTED_EMERALD_BLOCK', 160]},
             #{'base': ['REDSTONE'], 't1': ['ENCHANTED_REDSTONE', 160], 't2': ['ENCHANTED_REDSTONE_BLOCK', 25600], 't3': None, 't4': None},
-            {'base': ['REDSTONE'], 'compacted': ['ENCHANTED_REDSTONE', ]},
-            {'base': ['REDSTONE'], 'compacted': ['', ]},
-            {'base': ['ENCHANTED_REDSTONE'], 'compacted': ['', ]},
+            {'base': ['REDSTONE'], 'compacted': ['ENCHANTED_REDSTONE', 160]},
+            {'base': ['REDSTONE'], 'compacted': ['ENCHANTED_REDSTONE_BLOCK', 25600]},
+            {'base': ['ENCHANTED_REDSTONE'], 'compacted': ['ENCHANTED_REDSTONE_BLOCK', 160]},
             #{'base': ['QUARTZ'], 't1': ['ENCHANTED_QUARTZ', 160], 't2': ['ENCHANTED_QUARTZ_BLOCK', 25600], 't3': None, 't4': None},
             {'base': ['QUARTZ'], 'compacted': ['ENCHANTED_QUARTZ', 160]},
             {'base': ['QUARTZ'], 'compacted': ['ENCHANTED_QUARTZ_BLOCK', 25600]},
@@ -189,7 +189,7 @@ async def bazaar(ctx):
             #{'base': ['SAND'], 't1': ['ENCHANTED_SAND', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['SAND'], 'compacted': ['ENCHANTED_SAND', 160]},
             #{'base': ['ENDSTONE'], 't1': ['ENCHANTED_ENDSTONE', 160], 't2': None, 't3': None, 't4': None},
-            {'base': ['ENDSTONE'], 'compacted': ['ENCHANTED_ENDSTONE', ]},
+            {'base': ['ENDER_STONE'], 'compacted': ['ENCHANTED_ENDSTONE', 160]},
             #{'base': ['SNOW_BALL'], 't1': ['SNOW_BLOCK', 4], 't2': ['ENCHANTED_SNOW_BLOCK', 640], 't3': None, 't4': None},
             {'base': ['SNOW_BALL'], 'compacted': ['SNOW_BLOCK', 4]},
             {'base': ['SNOW_BALL'], 'compacted': ['ENCHANTED_SNOW_BLOCK', 640]},
@@ -210,13 +210,15 @@ async def bazaar(ctx):
             #{'base': ['SPIDER_EYE'], 't1': ['ENCHANTED_SPIDER_EYE', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['SPIDER_EYE'], 'compacted': ['SPIDER_EYE', 160]},
             #{'base': ['GUNPOWDER'], 't1': ['ENCHANTED_GUNPOWDER', 160], 't2': None, 't3': None, 't4': None},
-            {'base': ['GUNPOWDER'], 'compacted': ['ENCHANTED_GUNPOWDER', 160]},
+            {'base': ['SULPHUR'], 'compacted': ['ENCHANTED_GUNPOWDER', 160]},
             #{'base': ['ENDER_PEARL'], 't1': ['ENCHANTED_ENDER_PEARL', 20], 't2': None, 't3': None, 't4': None},
             {'base': ['ENDER_PEARL'], 'compacted': ['ENDER_PEARL', 20]},
             #{'base': ['GHAST_TEAR'], 't1': ['ENCHANTED_GHAST_TEAR', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['GHAST_TEAR'], 'compacted': ['ENCHANTED_GHAST_TEAR', 160]},
             #{'base': ['SLIME_BALL'], 't1': ['ENCHANTED_SLIME_BALL', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['SLIME_BALL'], 'compacted': ['ENCHANTED_SLIME_BALL', 160]},
+            {'base': ['SLIME_BALL'], 'compacted': ['ENCHANTED_SLIME_BLOCK', 25600]},
+            {'base': ['ENCHANTED_SMILE_BALL'], 'compacted': ['ENCHANTED_SLIME_BLOCK', 160]},
             #{'base': ['BLAZE_ROD'], 't1': ['ENCHANTED_BLAZE_POWDER', 160], 't2': ['ENCHANTED_BLAZE_ROD', 25600], 't3': None, 't4': None},
             {'base': ['BLAZE_ROD'], 'compacted': ['ENCHANTED_BLAZE_POWDER', 160]},
             {'base': ['BLAZE_ROD'], 'compacted': ['ENCHANTED_BLAZE_ROD', 25600]},
@@ -254,7 +256,7 @@ async def bazaar(ctx):
             #{'base': ['PRISMARINE_SHARD'], 't1': ['ENCHANTED_PRISMARINE_SHARD', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['PRISMARINE_SHARD'], 'compacted': ['ENCHANTED_PRISMARINE_SHARD', 160]},
             #{'base': ['PRISMARINE_CRYSTAL'], 't1': ['ENCHANTED_PRISMARINE_CRYSTAL', 160], 't2': None, 't3': None, 't4': None},
-            {'base': ['PRISMARINE_CRYSTAL'], 'compacted': ['ENCHANTED_PRISMARINE_CRYSTAL', 160]},
+            {'base': ['PRISMARINE_CRYSTALS'], 'compacted': ['ENCHANTED_PRISMARINE_CRYSTALS', 160]},
             #{'base': ['CLAY_BALL'], 't1': ['ENCHANTED_CLAY_BALL', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['CLAY_BALL'], 'compacted': ['ENCHANTED_CLAY_BALL', 160]},
             #{'base': ['WATER_LILY'], 't1': ['ENCHANTED_WATER_LILY', 160], 't2': None, 't3': None, 't4': None},
@@ -275,26 +277,45 @@ async def bazaar(ctx):
                     item['base'].extend([otheritem['sellprice'], otheritem['buyprice'], otheritem['name']])
                 if item['compacted'][0] == otheritem['id']:
                     item['compacted'].extend([otheritem['sellprice'], otheritem['buyprice'], otheritem['name']])
-        with open('tierup.json', 'w') as f:
-            json.dump(tierup, f)
-        for item in tierup:
-            item['margin'] = (item['compacted'][2] - item['compacted'][2]*item['base'][1])
-            item['marginpercent'] = (item['compacted'][2] - item['compacted'][2]*item['base'][1]) / item['compacted'][2]*item['base'][1]
-            item['instantmargin'] = (item['compacted'][1] - item['compacted'][2]*item['base'][2])
-            item['instantmarginpercent'] = (item['compacted'][1] - item['compacted'][2]*item['base'][2]) / item['compacted'][2]*item['base'][2]
+            item['margin'] = (float(item['compacted'][3]) - (item['compacted'][1] * item['base'][1]))
+            item['marginpercent'] = (float(item['compacted'][3]) - (item['compacted'][1] * item['base'][1])) / (item['compacted'][1] * item['base'][1])
+            item['instantmargin'] = (float(item['compacted'][2]) - (item['compacted'][1] * item['base'][2]))
+            item['instantmarginpercent'] = (float(item['compacted'][2]) - (item['compacted'][1] * item['base'][2])) / (item['compacted'][1] * item['base'][2])
         if opt == 'tierup':
-            sorted(tierup, key = lambda x: x['margin'], reverse=True)
+            tierup = sorted(tierup, key = lambda x: x['marginpercent'], reverse=True)
             embed = discord.Embed(title='Best Bazaar Tier-up Flips', description='Buy order at +0.1, personal compact, and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
-            for i in range(10):
-                embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][3]}', value=f'Buy {tierup[i]["compacted"][1]}x at {int(tierup[i]["marginpercent"]*10000)/100}% or {int(tierup[i]["margin"]*10000)/100} per item.')
+            for i in range(16):
+                embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][4]}', value=f'Buy {tierup[i]["compacted"][1]}x {tierup[i]["base"][3]} at {truncate(tierup[i]["marginpercent"]*100,2)}% or {truncate(tierup[i]["margin"],2)} coins profit per item.')
         elif opt == 'instanttierup':
-            sorted(data, key = lambda x: x['instantmargin'], reverse=True)
+            tierup = sorted(data, key = lambda x: x['instantmarginpercent'], reverse=True)
             embed = discord.Embed(title='Best Bazaar Tier-up Flips', description='Instant-buy, personal compact, and instant-sell', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
-            for i in range(10):
-                embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][3]}', value=f'Instant-buy {tierup[i]["compacted"][1]}x at {int(tierup[i]["instantmarginpercent"]*10000)/100}% or {int(tierup[i]["instantmargin"]*10000)/100} per item.')
+            for i in range(16):
+                embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][3]}', value=f'Instant-buy {tierup[i]["compacted"][1]}x {tierup[i]["base"][3]} at {int(tierup[i]["instantmarginpercent"]*10000)/100}% or {int(tierup[i]["instantmargin"]*10000)/100} coins profit per item.')
+        await ctx.send(embed=embed)
     elif opt == 'craft':
         craft = [
-            {'requirements': [['ITEM_1', NUMBER_OF_ITEMS], ['ITEM_2', NUMBER_OF_ITEMS]], 'crafted': ['ITEM_NAME']},
+            # farming
+            # golden carrot
+            # enchanted cookie
+            # enchanted cake
+            # mining
+            # enchanted charcoal
+            # enchanted redstone lamp
+            # enchanted fermented spider eye
+            # enchanted firework rocket
+            # enchanted eye of ender
+            # slayers
+            # revenant viscera
+            # tarantula silk
+            # golden wolf tooth
+            # baits
+            # misc
+            {'requirements': [['ENCHANTED_BAKED_POTATO', 1], ['SUGAR_CANE', 3]], 'crafted': ['HOT_POTATO_BOOK']},
+            {'requirements': [['ENCHANTED_COBBLESTONE', 448], ['ENCHANTED_REDSTONE_BLOCK', 1]], 'crafted': ['SUPER_COMPACTOR_3000']},
+            {'requirements': [['ENCHANTED_COAL_BLOCK', 2], ['ENCHANTED_IRON', 1]], 'crafted': ['ENCHANTED_LAVA_BUCKET']},
+            {'requirements': [['INK_SACK:4', 6]], 'crafted': ['']},
+            {'requirements': [['ENCHANTED_LAPIS_LAZULI', 6]], 'crafted': ['']},
+            {'requirements': [['ENCHANTED_LAPIS_LAZULI_BLOCK', 6]], 'crafted': ['']},
         ]
         pass
     #elif opt == 'volume':
@@ -303,8 +324,8 @@ async def bazaar(ctx):
     elif opt == 'margin':
         data = sorted(data, key = lambda x: x['margin'], reverse=True)
         embed = discord.Embed(title='Best Bazaar Flips for Margin', description='Buy order at +0.1 and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
-        for i in range(10):
-            embed.add_field(name=f'{i+1}. {data[i]["name"]}', value=f'{int(data[i]["margin"]*10000)/100}% at {int((data[i]["buyprice"]-data[i]["sellprice"])*10000)/100} per item.')
+        for i in range(16):
+            embed.add_field(name=f'{i+1}. {data[i]["name"]}', value=f'{int(data[i]["margin"]*10000)/100}% at {truncate(data[i]["buyprice"]-data[i]["sellprice"],2)} per item.')
         await ctx.send(embed=embed)
     # add 'misc'
     # things like refining and others
