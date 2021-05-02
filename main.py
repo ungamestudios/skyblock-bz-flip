@@ -68,7 +68,7 @@ async def bazaar(ctx):
     global data
     opt = ctx.message.content[8:]
     if len(opt) < 1:
-        await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar option (tierup, instanttierup, craft, instantcraft, margin))', type='rich', colour=discord.Colour.red()))
+        await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar option (tierup, instanttierup, craft, instantcraft, margin)', type='rich', colour=discord.Colour.red()))
         return
     if opt == 'tierup' or opt == 'instanttierup':
         tierup = [
