@@ -139,7 +139,7 @@ async def bazaar(ctx):
             #{'base': ['RABBIT_FOOT'], 't1': ['ENCHANTED_RABBIT_FOOT', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['RABBIT_FOOT'], 'compacted': ['ENCHANTED_RABBIT_FOOT', 160]},
             #{'base': ['RABBIT_HIDE'], 't1': ['ENCHANTED_RABBIT_HIDE', 160], 't2': None, 't3': None, 't4': None},
-            {'base': ['RABBIT_HIDE'], 'compacted': ['ENCHANTED_RABBIT_HIDE', 160]},
+            {'base': ['RABBIT_HIDE'], 'compacted': ['ENCHANTED_RABBIT_HIDE', 576]},
             #{'base': ['NETHER_STALK'], 't1': ['ENCHANTED_NETHER_STALK', 160], 't2': ['MUTANT_NETHER_STALK', 25600], 't3': None, 't4': None},
             {'base': ['NETHER_STALK'], 'compacted': ['ENCHANTED_NETHER_STALK', 160]},
             {'base': ['NETHER_STALK'], 'compacted': ['MUTANT_NETHER_STALK', 25600]},
