@@ -119,7 +119,7 @@ async def bazaar(ctx):
             #{'base': ['FEATHER'], 't1': ['ENCHANTED_FEATHER', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['FEATHER'], 'compacted': ['ENCHANTED_FEATHER', 160]},
             #{'base': ['LEATHER'], 't1': ['ENCHANTED_LEATHER', 160], 't2': None, 't3': None, 't4': None},
-            {'base': ['LEATHER'], 'compacted': ['ENCHANTED_LEATHER', 160]},
+            {'base': ['LEATHER'], 'compacted': ['ENCHANTED_LEATHER', 276]},
             #{'base': ['RAW_BEEF'], 't1': ['ENCHANTED_RAW_BEEF', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['RAW_BEEF'], 'compacted': ['ENCHANTED_RAW_BEEF', 160]},
             #{'base': ['PORK'], 't1': ['ENCAHNTED_PORK', 160], 't2': ['ENCHANTED_GRILLED_PORK', 25600], 't3': None, 't4': None},
