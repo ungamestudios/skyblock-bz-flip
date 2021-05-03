@@ -119,7 +119,7 @@ async def bazaar(ctx):
             #{'base': ['FEATHER'], 't1': ['ENCHANTED_FEATHER', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['FEATHER'], 'compacted': ['ENCHANTED_FEATHER', 160]},
             #{'base': ['LEATHER'], 't1': ['ENCHANTED_LEATHER', 160], 't2': None, 't3': None, 't4': None},
-            {'base': ['LEATHER'], 'compacted': ['ENCHANTED_LEATHER', 276]},
+            {'base': ['LEATHER'], 'compacted': ['ENCHANTED_LEATHER', 576]},
             #{'base': ['RAW_BEEF'], 't1': ['ENCHANTED_RAW_BEEF', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['RAW_BEEF'], 'compacted': ['ENCHANTED_RAW_BEEF', 160]},
             #{'base': ['PORK'], 't1': ['ENCAHNTED_PORK', 160], 't2': ['ENCHANTED_GRILLED_PORK', 25600], 't3': None, 't4': None},
@@ -378,7 +378,9 @@ async def bazaar(ctx):
                         item['crafted'].append(dat['sellprice'])
                     item['name'] = dat['name']
                 for req in item['requirements']:
-                    if dat['id'] == item['requirements'][0]:
+                    if isinstance(req, float) or isinstance(req, int):
+                        continue
+                    if dat['id'] == req[0]:
                         req.append(dat['name'])
         craft = sorted(craft, key = (lambda x: x['crafted'][-1] / x['requirements'][-1]), reverse=True)
         embed = discord.Embed(title='Best Bazaar Craft Flips', description='Buy order at +0.1, craft/quick-craft, and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
