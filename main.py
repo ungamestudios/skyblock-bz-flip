@@ -386,7 +386,7 @@ async def bazaar(ctx):
         embed = discord.Embed(title='Best Bazaar Craft Flips', description='Buy order at +0.1, craft/quick-craft, and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
         for i in range(16):
             x = ''
-            for a in range(len(craft[i]['requirements'])-2):
+            for a in range(len(craft[i]['requirements'])-1):
                 x += f'{craft[i]["requirements"][a][1]}x {craft[i]["requirements"][a][-1]} '
             embed.add_field(name=f'{i+1}. {craft[i]["name"]}', value=f'Buy {x}for {truncate(((craft[i]["crafted"][-1] / craft[i]["requirements"][-1])*10000)/10000, 2)}% or {truncate(craft[i]["crafted"][-1] - craft[i]["requirements"][-1], 2)} coins profit per item.')
         await ctx.send(embed=embed)
