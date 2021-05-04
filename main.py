@@ -348,7 +348,7 @@ async def bazaar(ctx, opt):
             # misc
             {'requirements': [['ENCHANTED_BAKED_POTATO', 1], ['SUGAR_CANE', 3]], 'crafted': ['HOT_POTATO_BOOK']},
             {'requirements': [['ENCHANTED_COBBLESTONE', 448], ['ENCHANTED_REDSTONE_BLOCK', 1]], 'crafted': ['SUPER_COMPACTOR_3000']},
-            {'requirements': [['ENCHANTED_COAL_BLOCK', 2], ['ENCHANTED_IRON', 1]], 'crafted': ['ENCHANTED_LAVA_BUCKET']},
+            {'requirements': [['ENCHANTED_COAL_BLOCK', 2], ['ENCHANTED_IRON', 3]], 'crafted': ['ENCHANTED_LAVA_BUCKET']},
             {'requirements': [['INK_SACK:4', 6], ['Glass Bottle', 1, 6]], 'crafted': ['EXP_BOTTLE']},
             {'requirements': [['ENCHANTED_LAPIS_LAZULI', 6], ['Glass Bottle', 1, 6]], 'crafted': ['GRAND_EXP_BOTTLE']},
             {'requirements': [['ENCHANTED_LAPIS_LAZULI_BLOCK', 6], ['Glass Bottle', 1, 6]], 'crafted': ['TITANIC_EXP_BOTTLE']},
