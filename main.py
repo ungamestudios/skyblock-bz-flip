@@ -56,6 +56,7 @@ async def test(ctx):
 @tasks.loop(seconds=5.0)
 async def reloadAPIdiscord():
     reloadAPI()
+    print('hi')
 
 # helper functions
 def truncate(number, digits) -> float:
