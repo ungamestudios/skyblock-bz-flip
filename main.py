@@ -1,5 +1,6 @@
 # base discord
 import os
+import asyncio
 from dotenv import load_dotenv
 import discord
 from discord.ext import commands, tasks
@@ -42,7 +43,7 @@ def reloadAPI():
 @bot.event
 async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="$help"))
-    reloadAPI()
+    bot.loop.create_task(reloadAPIdiscord())
     # ah
     # ah_data=requests.get('https://api.hypixel.net/skyblock/auctions').text
     # with open('auction.json', 'w') as file:
@@ -53,10 +54,11 @@ async def on_ready():
 async def test(ctx):
     print('bot has admin')
 
-@tasks.loop(seconds=5.0)
 async def reloadAPIdiscord():
-    reloadAPI()
-    print('hi')
+    while True:
+        reloadAPI()
+        print('hi')
+        await asyncio.sleep(5)
 
 # helper functions
 def truncate(number, digits) -> float:
