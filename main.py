@@ -296,7 +296,7 @@ async def bazaar(ctx, opt):
             tierup = sorted(tierup, key = lambda x: x['instantmarginpercent'], reverse=True)
             embed = discord.Embed(title='Best Bazaar Tier-up Flips', description='Instant-buy, personal compact, and instant-sell', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
             for i in range(16):
-                embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][4]}', value=f'Instant-buy {tierup[i]["compacted"][1]}x {tierup[i]["base"][3]} at {int(tierup[i]["instantmarginpercent"]*10000)/100}% or {int(tierup[i]["instantmargin"]*10000)/100} coins profit per item.')
+                embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][4]}', value=f'Instant-buy {tierup[i]["compacted"][1]}x {tierup[i]["base"][3]} at {truncate(tierup[i]["instantmarginpercent"]*100,2)}% or {truncate(tierup[i]["instantmargin"],2)} coins profit per item.')
         await ctx.send(embed=embed)
     elif opt == 'craft' or opt == 'instantcraft':
         craft = [
