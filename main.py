@@ -49,15 +49,9 @@ async def on_ready():
     # with open('auction.json', 'w') as file:
     # file.write(ah_data)
 
-@bot.command(name='test')
-@commands.bot_has_permissions(administrator = True)
-async def test(ctx):
-    print('bot has admin')
-
 async def reloadAPIdiscord():
     while True:
         reloadAPI()
-        print('hi')
         await asyncio.sleep(5)
 
 # helper functions
