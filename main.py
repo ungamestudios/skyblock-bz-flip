@@ -212,7 +212,7 @@ async def bazaar(ctx, opt):
             {'base': ['BONE'], 'compacted': ['ENCHANTED_BONE_BLOCK', 25600]},
             {'base': ['ENCHANTED_BONE'], 'compacted': ['ENCHANTED_BONE_BLOCK', 160]},
             #{'base': ['STRING'], 't1': ['ENCHANTED_STRING', 160], 't2': None, 't3': None, 't4': None},
-            {'base': ['STRING'], 'compacted': ['ENCHANTED_STRING', 160]},
+            {'base': ['STRING'], 'compacted': ['ENCHANTED_STRING', 192]},
             #{'base': ['SPIDER_EYE'], 't1': ['ENCHANTED_SPIDER_EYE', 160], 't2': None, 't3': None, 't4': None},
             {'base': ['SPIDER_EYE'], 'compacted': ['SPIDER_EYE', 160]},
             #{'base': ['GUNPOWDER'], 't1': ['ENCHANTED_GUNPOWDER', 160], 't2': None, 't3': None, 't4': None},
