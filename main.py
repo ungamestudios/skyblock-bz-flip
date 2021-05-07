@@ -401,13 +401,14 @@ async def bazaar(ctx, opt):
 # reload api
 @bot.command(name='reload')
 async def reload(ctx):
-    reloadAPI()
-    global data
-    # ah
-    # ah_data=requests.get('https://api.hypixel.net/skyblock/auctions').text
-    # with open('auction.json', 'w') as file:
-    # file.write(ah_data)
-    await ctx.send(embed=discord.Embed(title='Successfully Reloaded API', description=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green()))
+    if ctx.author.id == 750055850889969725:
+        reloadAPI()
+        global data
+        # ah
+        # ah_data=requests.get('https://api.hypixel.net/skyblock/auctions').text
+        # with open('auction.json', 'w') as file:
+        # file.write(ah_data)
+        await ctx.send(embed=discord.Embed(title='Successfully Reloaded API', description=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green()))
 
 # debug command
 @bot.command(name='debug')
