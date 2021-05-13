@@ -331,17 +331,29 @@ async def bazaar(ctx, opt):
             # golden wolf tooth
             {'requirements': [['WOLF_TOOTH', 128], ['ENCHANTED_GOLD', 32]], 'crafted': ['GOLDEN_TOOTH']},
             # baits
-            # carrit
+            # carrot
+            {'requirements': [['CARROT_ITEM', 1], ['RAW_FISH', 1]], 'crafted': ['CARROT_BAIT']},
             # minnow
+            {'requirements': [['RAW_FISH', 2]], 'crafted': ['MINNOW_BAIT']},
             # fish
+            {'requirements': [['RAW_FISH', 2], ['RAW_FISH:1', 1]], 'crafted': ['FISH_BAIT']},
             # light
+            {'requirements': [['PRISMARINE_CRYSTALS', 2], ['RAW_FISH', 1]], 'crafted': ['LIGHT_BAIT']},
             # dark
+            {'requirements': [['INK_SACK', 1], ['RAW_FISH', 1]], 'crafted': ['DARK_BAIT']},
             # spooky
+            {'requirements': [['PUMPKIN', 1], ['RAW_FISH', 1]], 'crafted': ['SPOOKY_BAIT']},
             # spiked
+            {'requirements': [['RAW_FISH:3', 1], ['RAW_FISH', 1]], 'crafted': ['SPIKED_BAIT']},
             # blessed
+            {'requirements': [['GOLD_INGOT', 9], ['RAW_FISH', 1], ['PRISMARINE_CRYSTALS', 1]], 'crafted': ['BLESSED_BAIT']},
             # ice
+            {'requirements': [['ICE', 1], ['RAW_FISH', 1]], 'crafted': ['ICE_BAIT']},
             # whale
+            {'requirements': [['FISH_BAIT', 1], ['LIGHT_BAIT', 1], ['DARK_BAIT', 1], ['BLESSED_BAIT', 1]], 'crafted': ['WHALE_BAIT']},
+            {'requirements': [['RAW_FISH', 5], ['RAW_FISH:1', 1], ['PRISMARINE_CRYSTALS', 3], ['INK_SACK', 1], ['GOLD_INGOT', 9]], 'crafted': ['WHALE_BAIT']},
             # shark
+            {'requirements': [['SHARK_FIN', 2]], 'crafted': ['SHARK_BAIT']},
             # misc
             {'requirements': [['ENCHANTED_BAKED_POTATO', 1], ['SUGAR_CANE', 3]], 'crafted': ['HOT_POTATO_BOOK']},
             {'requirements': [['ENCHANTED_COBBLESTONE', 448], ['ENCHANTED_REDSTONE_BLOCK', 1]], 'crafted': ['SUPER_COMPACTOR_3000']},
