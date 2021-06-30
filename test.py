@@ -1,7 +1,8 @@
-import json, cloudscraper
-
-scraper = cloudscraper.create_scraper()
-data = scraper.get('https://sky.shiiyu.moe/api/v2/bazaar').text
-data = json.loads(data)
-with open('bazaar.json', 'w') as f:
-    json.dump(data, f)
+import json
+with open('test.txt', 'r') as f:
+    x = json.load(f)
+with open('test.json', 'w') as f:
+    y = {}
+    for (key, value) in x.items():
+        y[key] = value['name']
+    json.dump(y, f)
