@@ -142,7 +142,18 @@ async def bazaar(ctx, opt):
         await ctx.send(embed=embed)
     # add 'misc'
     # things like refining and others
-
+    # specific item
+    elif opt == 'sc3k':
+        if ctx.author.id == 750055850889969725:
+            cost = 0
+            for item in data:
+                if item['id'] == 'SUPER_COMPACTOR_3000':
+                    revenue = item['buyprice']
+                elif item['id'] == '':
+                    cost += item['sellprice'] * 448
+                elif item['id'] == '':
+                    cost += item['sellprice']
+            embed = discord.Embed(title='Super Compactor 3000', description=f'SC3K sells for {revenue}, and the materials cost {cost}, and the profit per item is {(revenue - cost)/cost}% or {revenue-cost} coins.')
 # dragons profit calculator
 @bot.command(name='dragons')
 async def dragons(ctx):
