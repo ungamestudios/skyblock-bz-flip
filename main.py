@@ -138,7 +138,7 @@ async def bazaar(ctx, opt):
         data = sorted(data, key = lambda x: x['margin'], reverse=True)
         embed = discord.Embed(title='Best Bazaar Flips for Margin', description='Buy order at +0.1 and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
         for i in range(16):
-            embed.add_field(name=f'{i+1}. {data[i]["name"]}', value=f'{int(data[i]["margin"]*10000)/100}% at {truncate(data[i]["buyprice"]-data[i]["sellprice"],2)} per item.')
+            embed.add_field(name=f'{i+1}. {data[i]["name"]}', value=f'{int(data[i]["margin"]*100)/100}% at {truncate(data[i]["buyprice"]-data[i]["sellprice"],2)} per item.')
         await ctx.send(embed=embed)
     # add 'misc'
     # things like refining and others
