@@ -85,12 +85,12 @@ async def bazaar(ctx, opt):
         if opt == 'tierup':
             tierup = sorted(tierup, key = lambda x: x['marginpercent'], reverse=True)
             embed = discord.Embed(title='Best Bazaar Tier-up Flips', description='Buy order at +0.1, personal compact, and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
-            for i in range(16):
+            for i in range(7):
                 embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][4]}', value=f'Buy {tierup[i]["compacted"][1]}x {tierup[i]["base"][3]} at {truncate(tierup[i]["marginpercent"]*100,2)}% or {truncate(tierup[i]["margin"],2)} coins profit per item.')
         elif opt == 'instanttierup':
             tierup = sorted(tierup, key = lambda x: x['instantmarginpercent'], reverse=True)
             embed = discord.Embed(title='Best Bazaar Tier-up Flips', description='Instant-buy, personal compact, and instant-sell', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
-            for i in range(16):
+            for i in range(7):
                 embed.add_field(name=f'{i+1}. {tierup[i]["compacted"][4]}', value=f'Instant-buy {tierup[i]["compacted"][1]}x {tierup[i]["base"][3]} at {truncate(tierup[i]["instantmarginpercent"]*100,2)}% or {truncate(tierup[i]["instantmargin"],2)} coins profit per item.')
         await ctx.send(embed=embed)
     elif opt == 'craft' or opt == 'instantcraft':
@@ -125,7 +125,7 @@ async def bazaar(ctx, opt):
                         req.append(dat['name'])
         craft = sorted(craft, key = (lambda x: x['crafted'][-1] / x['requirements'][-1]), reverse=True)
         embed = discord.Embed(title='Best Bazaar Craft Flips', description='Buy order at +0.1, craft/quick-craft, and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
-        for i in range(16):
+        for i in range(7):
             x = ''
             for a in range(len(craft[i]['requirements'])-1):
                 x += f'{craft[i]["requirements"][a][1]}x {craft[i]["requirements"][a][-1]} '
@@ -137,7 +137,7 @@ async def bazaar(ctx, opt):
     elif opt == 'margin':
         data = sorted(data, key = lambda x: x['margin'], reverse=True)
         embed = discord.Embed(title='Best Bazaar Flips for Margin', description='Buy order at +0.1 and sell order at -0.1', footer=hashlib.md5(str(data).encode('utf-8')).hexdigest(), type='rich', colour=discord.Colour.green())
-        for i in range(16):
+        for i in range(7):
             embed.add_field(name=f'{i+1}. {data[i]["name"]}', value=f'{int(data[i]["margin"]*10000)/100}% at {truncate(data[i]["buyprice"]-data[i]["sellprice"],2)} per item.')
         await ctx.send(embed=embed)
     # add 'misc'
