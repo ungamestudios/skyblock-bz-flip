@@ -66,7 +66,7 @@ def truncate(number, digits) -> float:
 @bot.command(name='bazaar')
 async def bazaar(ctx, opt):
     global data
-    if len(opt) < 1 or opt not in ['tierup', 'instanttierup', 'craft', 'instantcraft', 'margin']:
+    if len(opt) < 1 or opt not in ['tierup', 'instanttierup', 'craft', 'instantcraft', 'margin', 'sc3k']:
         await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar option (tierup, instanttierup, craft, instantcraft, margin)', type='rich', colour=discord.Colour.red()))
         return
     if opt == 'tierup' or opt == 'instanttierup':
