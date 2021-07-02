@@ -66,7 +66,7 @@ def truncate(number, digits) -> float:
 @bot.command(name='bazaar')
 async def bazaar(ctx, opt):
     global data
-    if len(opt) < 1 or opt not in ['tierup', 'instanttierup', 'craft', 'instantcraft', 'margin', 'sc3k']:
+    if len(opt) < 1 or opt not in ['tierup', 'instanttierup', 'craft', 'instantcraft', 'margin', 'sc3k', 'catalyst']:
         await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar option (tierup, instanttierup, craft, instantcraft, margin)', type='rich', colour=discord.Colour.red()))
         return
     if opt == 'tierup' or opt == 'instanttierup':
@@ -142,7 +142,7 @@ async def bazaar(ctx, opt):
         await ctx.send(embed=embed)
     # add 'misc'
     # things like refining and others
-    # specific item
+    # specific items
     elif opt == 'sc3k':
         if ctx.author.id == 750055850889969725:
             cost = 0
@@ -158,6 +158,20 @@ async def bazaar(ctx, opt):
             embed.add_field(name = 'Sell Value', value = '{:,} coins'.format(truncate(revenue, 2)))
             embed.add_field(name = 'Profit Margins', value = '{:,}% or {:,} coins per item'.format(truncate((revenue - cost)*100/cost, 2), truncate(revenue-cost, 2)))
         await ctx.send(embed=embed)
+    elif opt == 'catalyst':
+        if ctx.author.id == 750055850889969725:
+            for item in data:
+                if item['id'] == 'HYPER_CATALYST':
+                    revenue = item['buyprice'] * 8
+                elif item['id'] == 'CATALYST':
+                    cost = item['sellprice'] * 8
+            embed = discord.Embed(title='Hyper Catalyst', description='Bazaar Statistics for 8x Catalysts/Hyper Catalysts', type='rich', colour = discord.Colour.blurple())
+            embed.add_field(name = 'Material Cost', value = '{:,} coins'.format(truncate(cost, 2)))
+            embed.add_field(name = 'Sell Value', value = '{:,} coins'.format(truncate(revenue, 2)))
+            embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 10% Profit', value = '{:,} coins'.format(int((10 * revenue) / 11 - cost)))
+            embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 20% Profit', value = '{:,} coins'.format(int((10 * revenue) / 12 - cost)))
+        await ctx.send(embed=embed)
+
 # dragons profit calculator
 @bot.command(name='dragons')
 async def dragons(ctx):
