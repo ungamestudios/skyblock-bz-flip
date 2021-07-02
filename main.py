@@ -144,17 +144,20 @@ async def bazaar(ctx, opt):
     # things like refining and others
     # specific item
     elif opt == 'sc3k':
-        print('hi')
         if ctx.author.id == 750055850889969725:
             cost = 0
             for item in data:
                 if item['id'] == 'SUPER_COMPACTOR_3000':
                     revenue = item['buyprice']
-                elif item['id'] == '':
+                elif item['id'] == 'ENCHANTED_COBBLESTONE':
                     cost += item['sellprice'] * 448
-                elif item['id'] == '':
+                elif item['id'] == 'ENCHANTED_REDSTONE_BLOCK':
                     cost += item['sellprice']
-            embed = discord.Embed(title='Super Compactor 3000', description=f'SC3K sells for {revenue}, and the materials cost {cost}, and the profit per item is {(revenue - cost)/cost}% or {revenue-cost} coins.')
+            embed = discord.Embed(title='Super Compactor 3000', description='Bazaar Statistics', type='rich', colour = discord.Colour.blurple())
+            embed.add_field(name = 'Material Cost', value = '{:,} coins'.format(truncate(cost, 2)))
+            embed.add_field(name = 'Sell Value', value = '{:,} coins'.format(truncate(revenue, 2)))
+            embed.add_field(name = 'Profit Margins', value = '{:,}% or {:,} coins per item'.format(truncate((revenue - cost)*100/cost, 2), truncate(revenue-cost, 2)))
+        await ctx.send(embed=embed)
 # dragons profit calculator
 @bot.command(name='dragons')
 async def dragons(ctx):
