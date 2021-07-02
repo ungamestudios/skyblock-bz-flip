@@ -144,6 +144,7 @@ async def bazaar(ctx, opt):
     # things like refining and others
     # specific item
     elif opt == 'sc3k':
+        print('hi')
         if ctx.author.id == 750055850889969725:
             cost = 0
             for item in data:
