@@ -166,6 +166,7 @@ async def bazaar(ctx, opt):
         embed = discord.Embed(title='Hyper Catalyst', description='Bazaar Statistics for 8x Catalysts/Hyper Catalysts', type='rich', colour = discord.Colour.blurple())
         embed.add_field(name = 'Material Cost', value = '{:,} coins'.format(truncate(cost, 2)))
         embed.add_field(name = 'Sell Value', value = '{:,} coins'.format(truncate(revenue, 2)))
+        embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a guaranteed Profit', value = '{:,} coins'.format(int((10 * revenue) / 10 - cost)))
         embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 10% Profit', value = '{:,} coins'.format(int((10 * revenue) / 11 - cost)))
         embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 20% Profit', value = '{:,} coins'.format(int((10 * revenue) / 12 - cost)))
     await ctx.send(embed=embed)
