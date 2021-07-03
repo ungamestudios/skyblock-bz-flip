@@ -169,7 +169,7 @@ async def bazaar(ctx, opt):
         embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a guaranteed Profit', value = '{:,} coins'.format(int((10 * revenue) / 10 - cost)))
         embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 10% Profit', value = '{:,} coins'.format(int((10 * revenue) / 11 - cost)))
         embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 20% Profit', value = '{:,} coins'.format(int((10 * revenue) / 12 - cost)))
-    await ctx.send(embed=embed)
+        await ctx.send(embed=embed)
 
 # dragons profit calculator
 @bot.command(name='dragons')
