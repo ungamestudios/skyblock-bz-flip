@@ -156,7 +156,7 @@ async def bazaar(ctx, opt):
         embed.add_field(name = 'Material Cost', value = '{:,} coins'.format(truncate(cost, 2)))
         embed.add_field(name = 'Sell Value', value = '{:,} coins'.format(truncate(revenue, 2)))
         embed.add_field(name = 'Profit Margins', value = '{:,}% or {:,} coins per item'.format(truncate((revenue - cost)*100/cost, 2), truncate(revenue-cost, 2)))
-    await ctx.send(embed=embed)
+        await ctx.send(embed=embed)
     elif opt == 'catalyst':
         for item in data:
             if item['id'] == 'HYPER_CATALYST':
