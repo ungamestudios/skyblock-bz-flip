@@ -1,1 +1,3 @@
 .env
+generate_clean_names.py
+temp.json
