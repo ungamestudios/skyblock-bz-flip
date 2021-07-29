@@ -228,7 +228,7 @@ async def bazaar(ctx):
             await ctx.send(embed=embed)
     elif opt == 'minion_storage':
         if len(dat) != 5:
-            await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar backpack [large storage price] [x-large storage price] [xx-large storage price] [minion storage x-pender price]', type='rich', colour=discord.Colour.red()))
+            await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar minion_storage [large storage price] [x-large storage price] [xx-large storage price] [minion storage x-pender price]', type='rich', colour=discord.Colour.red()))
         else:
             large = int(1)
             xl = int(2)
