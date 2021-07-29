@@ -64,9 +64,11 @@ def truncate(number, digits) -> float:
 
 # bazaar
 @bot.command(name='bazaar')
-async def bazaar(ctx, opt):
+async def bazaar(ctx):
+    dat = ctx.message.content[8:].split()
+    opt = dat[0]
     global data
-    if len(opt) < 1 or opt not in ['tierup', 'instanttierup', 'craft', 'instantcraft', 'margin', 'sc3k', 'catalyst']:
+    if len(dat) < 1 or opt not in ['tierup', 'instanttierup', 'craft', 'instantcraft', 'margin', 'sc3k', 'catalyst', 'lava_bucket', 'carrot_candy', 'exp_bottle', 'backpack', 'minion_storage']:
         await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar option (tierup, instanttierup, craft, instantcraft, margin)', type='rich', colour=discord.Colour.red()))
         return
     if opt == 'tierup' or opt == 'instanttierup':
@@ -172,6 +174,71 @@ async def bazaar(ctx, opt):
         embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 15% Profit', value = '{:,} coins'.format(int((100 * revenue) / 115 - cost)))
         embed.add_field(name = 'Maximum Price of Hyper Catalyst Upgrades for a 20% Profit', value = '{:,} coins'.format(int((100 * revenue) / 120 - cost)))
         await ctx.send(embed=embed)
+    elif opt == 'lava_bucket':
+        if len(dat) != 2:
+            await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar lava_bucket [heat core price]', type='rich', colour=discord.Colour.red()))
+        for item in data:
+            if item['id'] == 'ENCHANTED_LAVA_BUCKET':
+                elavabuy = item['sellprice']
+            elif item['id'] == 'MAGMA_BUCKET':
+                magmabuy = item['sellprice']
+                magmasell = item['buyprice']
+            elif item['id'] == 'PLASMA_BUCKET':
+                plasmasell = item['buyprice']
+        heat_core = int(dat[1])
+        embed = discord.Embed(title='Magma Bucket/Plasma Bucket', description='Bazaar Statistics for Enchanted Lava/Magma/Plasma Buckets', type='rich', colour = discord.Colour.blurple())
+        embed.add_field(name = 'Enchanted -> Magma', value = '{:,}% or {:,} coins profit'.format(truncate((magmasell - heat_core - (2*elavabuy))*100/(heat_core + (2*elavabuy)), 2), truncate(magmasell - heat_core - (2*elavabuy), 2)))
+        embed.add_field(name = 'Enchanted -> Plasma', value = '{:,}% or {:,} coins profit'.format(truncate((plasmasell - (2*heat_core) - (4*elavabuy))*100/((2*heat_core) + (4*elavabuy)), 2), truncate(plasmasell - (2*heat_core) - (4*elavabuy), 2)))
+        embed.add_field(name = 'Magma -> Plasma', value = '{:,}% or {:,} coins profit'.format(truncate((plasmasell - heat_core  - (2*magmabuy))*100/(heat_core + (2*magmabuy)), 2), truncate(plasmasell - heat_core  - (2*magmabuy), 2)))
+        await ctx.send(embed=embed)
+    elif opt == 'carrot_candy':
+        if len(dat) != 4:
+            await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar carrot_candy [superb carrot candy price] [ultimate carrot candy price] [ultimate carrot candy upgrade price]', type='rich', colour=discord.Colour.red()))
+        else:
+            revenue = 10 * int(dat(2))
+            cost = 8 * int(dat[1]) + int(dat[3])
+            embed = discord.Embed(title='Ultimate Carrot Candy', description='Bazaar Statistics for 8x Super Carrot Candy/10x Hyper Catalysts', type='rich', colour = discord.Colour.blurple())
+            embed.add_field(name = 'Profit in Percent', value = '{:,}%'.format(truncate((revenue - cost)*100/cost, 2)))
+            embed.add_field(name = 'Protit in Coins', value = '{:,} coins'.format(truncate(revenue-cost, 2)))
+            await ctx.send(embed=embed)
+    elif opt == 'exp_bottle':
+        for item in data:
+            if item['id'] == 'COLOSSAL_EXP_BOTTLE':
+                revenue = item['buyprice']
+            elif item['id'] == 'TITANIC_EXP_BOTTLE':
+                cost = item['sellprice']
+        embed = discord.Embed(title='Colossal Exp Bottles', description='Bazaar Statistics for Colossal/Titanic Exp Bottles', type='rich', colour = discord.Colour.blurple())
+        embed.add_field(name = 'Material Cost', value = '{:,} coins'.format(truncate(cost, 2)))
+        embed.add_field(name = 'Sell Value', value = '{:,} coins'.format(truncate(revenue, 2)))
+        embed.add_field(name = 'Maximum Price of Colossal Experience Bottle Upgrades for a guaranteed Profit', value = '{:,} coins'.format(int(revenue - cost)))
+        embed.add_field(name = 'Maximum Price of Colossal Experience Bottle Upgrades for a 5% Profit', value = '{:,} coins'.format(int((100 * revenue) / 105 - cost)))
+        embed.add_field(name = 'Maximum Price of Colossal Experience Bottle Upgrades for a 10% Profit', value = '{:,} coins'.format(int((100 * revenue) / 110 - cost)))
+        embed.add_field(name = 'Maximum Price of Colossal Experience Bottle Upgrades for a 15% Profit', value = '{:,} coins'.format(int((100 * revenue) / 115 - cost)))
+        embed.add_field(name = 'Maximum Price of Colossal Experience Bottle Upgrades for a 20% Profit', value = '{:,} coins'.format(int((100 * revenue) / 120 - cost)))
+        await ctx.send(embed=embed)
+    elif opt == 'backpack':
+        if len(dat) != 4:
+            await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar backpack [greater backpack price] [jumbo backpack price] [jumbo backpack upgrade price]', type='rich', colour=discord.Colour.red()))
+        else:
+            revenue = int(dat(2))
+            cost = int(dat[1]) + int(dat[3])
+            embed = discord.Embed(title='Jumbo Backpack', description='Bazaar Statistics for Greater/Jumbo Backpack', type='rich', colour = discord.Colour.blurple())
+            embed.add_field(name = 'Profit in Percent', value = '{:,}%'.format(truncate((revenue - cost)*100/cost, 2)))
+            embed.add_field(name = 'Protit in Coins', value = '{:,} coins'.format(truncate(revenue-cost, 2)))
+            await ctx.send(embed=embed)
+    elif opt == 'minion_storage':
+        if len(dat) != 5:
+            await ctx.send(embed=discord.Embed(title='Usage', description='$bazaar backpack [large storage price] [x-large storage price] [xx-large storage price] [minion storage x-pender price]', type='rich', colour=discord.Colour.red()))
+        else:
+            large = int(1)
+            xl = int(2)
+            xxl = int(3)
+            upgrade = int(4)
+            embed = discord.Embed(title='Large/X-Large/XX-Large Storage', description='Bazaar Statistics for Large/X-Large')
+            embed.add_field(name='Large -> X-Large', value = '{:,}% or {:,} coins profit'.format(truncate((xl - large - upgrade)*100/(large + upgrade), 2), truncate((xl - large - upgrade), 2)))
+            embed.add_field(name='Large -> XX-Large', value = '{:,}% or {:,} coins profit'.format(truncate((xxl - large - (2*upgrade))*100/(large + (2*upgrade)), 2), truncate((xxl - large - (2*upgrade)), 2)))
+            embed.add_field(name='X-Large -> XX-Large', value = '{:,}% or {:,} coins profit'.format(truncate((xxl - xl - upgrade)*100/(xl + upgrade), 2), truncate((xxl - xl - upgrade), 2)))
+            await ctx.send(embed=embed)
 
 # dragons profit calculator
 @bot.command(name='dragons')
